@@ -31,6 +31,7 @@ on:
         options:
           - build.sh
           - build-miui.sh
+          - build-miui-clang18.sh
 
       ksu:
         description: 'Enable KernelSU (ReSukiSU-SuSFS)'
@@ -81,7 +82,7 @@ jobs:
   
     - name: Build Kernel
       run: |
-        chmod +x build.sh build-miui-clang18.sh
+        chmod +x build.sh build-miui.sh build-miui-clang18.sh
         
         echo "Using script: ${{ inputs.script }}"
 
