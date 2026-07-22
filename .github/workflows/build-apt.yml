@@ -1,4 +1,4 @@
-name: No-edit workflow
+name: Build Kernel
 
 on:
   workflow_dispatch:
