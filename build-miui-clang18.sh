@@ -220,31 +220,48 @@ scripts/config --file out/.config \
 
 scripts/config --file out/.config \
     --set-str STATIC_USERMODEHELPER_PATH /system/bin/micd \
-    -e PERF_CRITICAL_RT_TASK	\
-    -e SF_BINDER		\
-    -e OVERLAY_FS		\
-    -e MIGT \
-    -e MIGT_ENERGY_MODEL \
-    -e MIHW \
-    -e PACKAGE_RUNTIME_INFO \
-    -e BINDER_OPT \
-    -e KPERFEVENTS \
-    -e MILLET \
-    -d PERF_HUMANTASK \
-    -d LTO_CLANG \
-    -e LTO_NONE \
-    -e SF_BINDER \
-    -e XIAOMI_MIUI \
-    -d MI_MEMORY_SYSFS \
-    -e TASK_DELAY_ACCT \
-    -e MIUI_ZRAM_MEMORY_TRACKING \
-    -e MI_FRAGMENTION \
-    -e PERF_HELPER \
-    -e BOOTUP_RECLAIM \
-    -e MI_RECLAIM \
-    -e RTMM \
-    -d REKERNEL \
-    -d REKERNEL_NETWORK
+            -e PERF_CRITICAL_RT_TASK \
+            -e SF_BINDER \
+            -e OVERLAY_FS \
+            -e MIGT \
+            -e MIGT_ENERGY_MODEL \
+            -e MIHW \
+            -e PACKAGE_RUNTIME_INFO \
+            -e BINDER_OPT \
+            -e KPERFEVENTS \
+            -e MILLET \
+            -e PERF_HUMANTASK \
+            -d LTO_CLANG \
+            -e LTO_NONE \
+            -d SHADOW_CALL_STACK \
+            -e XIAOMI_MIUI \
+            -d MI_MEMORY_SYSFS \
+            -e TASK_DELAY_ACCT \
+            -e MIUI_ZRAM_MEMORY_TRACKING \
+            -e PERF_HELPER \
+            -e BOOTUP_RECLAIM \
+            -e MI_RECLAIM \
+            -e RTMM \
+            -d REKERNEL \
+            -d REKERNEL_NETWORK
+            
+    echo "Integrating Droidspaces support..."
+    scripts/config --file out/.config \
+    -e SYSCTL -e SYSVIPC -e POSIX_MQUEUE \
+    -e NAMESPACES -e PID_NS -e UTS_NS -e IPC_NS \
+    -e SECCOMP -e SECCOMP_FILTER \
+    -e CGROUPS -e CGROUP_DEVICE -e CGROUP_PIDS -e MEMCG \
+    -e CGROUP_SCHED -e FAIR_GROUP_SCHED -e CGROUP_FREEZER -e CGROUP_NET_PRIO \
+    -e DEVTMPFS -e OVERLAY_FS -e TMPFS_POSIX_ACL -e TMPFS_XATTR \
+    -e FW_LOADER -e FW_LOADER_USER_HELPER -e FW_LOADER_COMPRESS \
+    -e NET_NS -e VETH -e BRIDGE \
+    -e NETFILTER -e BRIDGE_NETFILTER -e NETFILTER_ADVANCED \
+    -e NF_CONNTRACK -e IP_NF_IPTABLES -e IP_NF_FILTER -e IP_NF_NAT \
+    -e NF_NAT -e NF_TABLES -e IP_NF_TARGET_MASQUERADE \
+    -e NETFILTER_XT_TARGET_MASQUERADE -e NETFILTER_XT_TARGET_TCPMSS \
+    -e NETFILTER_XT_MATCH_ADDRTYPE -e NF_CONNTRACK_NETLINK \
+    -e NF_NAT_REDIRECT -e IP_ADVANCED_ROUTER -e IP_MULTIPLE_TABLES \
+    -d ANDROID_PARANOID_NETWORK
 
 echo "Resolving new config dependencies (non-interactive)..."
 yes "" | make $MAKE_ARGS oldconfig
