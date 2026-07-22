@@ -1,4 +1,4 @@
-name: Build Kernel
+name: Build Kernel-clang 18
 
 on:
   workflow_dispatch:
@@ -71,13 +71,14 @@ jobs:
           kernel-ccache-${{ inputs.device }}-
           kernel-ccache-
 
-    - name: Setup Toolchain (ZyC-Clang 16)
+    - name: Setup Toolchain (Neutron Clang 18.0git)
       run: |
-        mkdir -p $HOME/zyc-clang
-        cd $HOME/zyc-clang
-        wget -q https://github.com/ZyCromerZ/Clang/releases/download/16.0.6-20260510-release/Clang-16.0.6-20260510.tar.gz
-        tar -zxvf Clang-16.0.6-20260510.tar.gz
-
+         mkdir -p $HOME/neutron-clang
+         cd $HOME/neutron-clang
+         wget -q https://github.com/Neutron-Toolchains/clang-build-catalogue/releases/download/05012024/neutron-clang-05012024.tar.zst
+         sudo apt-get install -y zstd
+         tar --use-compress-program=unzstd -xvf neutron-clang-05012024.tar.zst
+  
     - name: Build Kernel
       run: |
         chmod +x build.sh build-miui.sh
