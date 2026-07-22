@@ -1,4 +1,4 @@
-name: Build Kernel
+name: stock apt
 
 on:
   workflow_dispatch:
