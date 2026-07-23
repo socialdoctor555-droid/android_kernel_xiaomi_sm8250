@@ -43,7 +43,7 @@ done
 # Configuration & Environment
 # ==========================================
 KERNEL_DIR="$(pwd)"
-TOOLCHAIN_BIN="$HOME/neutron-clang/bin"
+TOOLCHAIN_BIN="$HOME/android-clang/bin"
 
 export PATH="${TOOLCHAIN_BIN}:${PATH}"
 export ARCH="arm64"
