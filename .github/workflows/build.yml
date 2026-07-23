@@ -66,14 +66,12 @@ jobs:
           ${{ runner.os }}-kernel-ccache-${{ github.event.inputs.device }}-
           ${{ runner.os }}-kernel-ccache-
 
-    - name: Setup Toolchain (Neutron Clang 18.0git)
+    - name: Setup Android Prebuilt Clang
       run: |
-         mkdir -p $HOME/neutron-clang
-         cd $HOME/neutron-clang
-         wget -q https://github.com/Neutron-Toolchains/clang-build-catalogue/releases/download/05012024/neutron-clang-05012024.tar.zst
-         sudo apt-get install -y zstd
-         tar --use-compress-program=unzstd -xvf neutron-clang-05012024.tar.zst
-  
+        git clone --depth=1 \
+        https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git \
+        $HOME/android-clang
+        
     - name: Run Build Script
       run: |
         chmod +x build_kernel.sh
