@@ -196,22 +196,7 @@ build_target() {
     # ----------------------------------------------------
     # Configuration tweaks
     # ----------------------------------------------------
-    
-    # 1. Baseband-guard configuration (Always applied)
-    echo "[*] Injecting Baseband-guard configuration..."
-    scripts/config --file "${OUT_DIR}/.config" -e BBG
-
-    # 2. KernelSU configurations
-    if [ "$ENABLE_KSU" -eq 1 ]; then
-        echo "[*] Injecting KernelSU & SUSFS configurations..."
-        scripts/config --file "${OUT_DIR}/.config" \
-            -e KSU \
-            -e THREAD_INFO_IN_TASK \
-            -e KSU_SUSFS
-    fi
-
-    # 3. MIUI configurations
-    if [ "$OS_TYPE" == "miui" ]; then
+    # 1. MIUI configurations
      echo "Integrating Droidspaces support..."
      scripts/config --file "${OUT_DIR}/.config" \
     -e SYSCTL -e SYSVIPC -e POSIX_MQUEUE \
