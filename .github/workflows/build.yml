@@ -1,26 +1,15 @@
-name: Build Kernel
+name: Build Kernel(clang)
 
 on:
   workflow_dispatch:
     inputs:
       device:
-        description: 'Target Device Code (设备代号)'
+        description: 'Target Device Code'
         required: true
-        default: 'lmi'
+        default: 'umi'
         type: choice
         options:
           - alioth
-          - apollo
-          - cas
-          - cmi
-          - dagu
-          - elish
-          - enuma
-          - lmi
-          - munch
-          - pipa
-          - psyche
-          - thyme
           - umi
       ksu:
         description: 'Enable KernelSU (ReSukiSU)'
@@ -28,7 +17,7 @@ on:
         type: boolean
         default: false
       target_os:
-        description: 'Target OS (目标系统)'
+        description: 'Target OS'
         required: true
         type: choice
         default: 'both'
