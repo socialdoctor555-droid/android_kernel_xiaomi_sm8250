@@ -212,34 +212,6 @@ build_target() {
 
     # 3. MIUI configurations
     if [ "$OS_TYPE" == "miui" ]; then
-        echo "[*] Injecting MIUI specific configurations..."
-        scripts/config --file "${OUT_DIR}/.config" \
-            --set-str STATIC_USERMODEHELPER_PATH /system/bin/micd \
-            -e PERF_CRITICAL_RT_TASK \
-            -e SF_BINDER \
-            -e OVERLAY_FS \
-            -e MIGT \
-            -e MIGT_ENERGY_MODEL \
-            -e MIHW \
-            -e PACKAGE_RUNTIME_INFO \
-            -e BINDER_OPT \
-            -e KPERFEVENTS \
-            -e MILLET \
-            -e PERF_HUMANTASK \
-            -d LTO_CLANG \
-            -e LTO_NONE \
-            -d SHADOW_CALL_STACK \
-            -e XIAOMI_MIUI \
-            -d MI_MEMORY_SYSFS \
-            -e TASK_DELAY_ACCT \
-            -e MIUI_ZRAM_MEMORY_TRACKING \
-            -e PERF_HELPER \
-            -e BOOTUP_RECLAIM \
-            -e MI_RECLAIM \
-            -e RTMM \
-            -d REKERNEL \
-            -d REKERNEL_NETWORK
-
      echo "Integrating Droidspaces support..."
      scripts/config --file "${OUT_DIR}/.config" \
     -e SYSCTL -e SYSVIPC -e POSIX_MQUEUE \
@@ -257,8 +229,6 @@ build_target() {
     -e NETFILTER_XT_MATCH_ADDRTYPE -e NF_CONNTRACK_NETLINK \
     -e NF_NAT_REDIRECT -e IP_ADVANCED_ROUTER -e IP_MULTIPLE_TABLES \
     -d ANDROID_PARANOID_NETWORK
- 
-    fi
 
     # We always need to re-evaluate dependencies because BBG is injected unconditionally
     echo "[*] Updating config (make olddefconfig)..."
