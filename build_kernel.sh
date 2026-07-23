@@ -241,7 +241,7 @@ build_target() {
             -d REKERNEL_NETWORK
 
      echo "Integrating Droidspaces support..."
-     scripts/config --file out/.config \
+     scripts/config --file "${OUT_DIR}/.config" \
     -e SYSCTL -e SYSVIPC -e POSIX_MQUEUE \
     -e NAMESPACES -e PID_NS -e UTS_NS -e IPC_NS \
     -e SECCOMP -e SECCOMP_FILTER \
